@@ -1,0 +1,23 @@
+{
+  "dataset_name": "NCI109",
+
+  "external": {"file_path": "None",
+    "graph_col": "g_id", "node_col": "node",
+    "embeddings": [], "continuous": []},
+
+  "graphs_data": {"file_path": "../data/NCI109_all.csv",
+    "graph_col": "g_id", "src_col": "src", "dst_col": "dst", "label_col": "label", "directed": "False",
+    "features": ["DEG", "CENTRALITY", "BFS"], "adjacency_norm": "NORM_REDUCED", "percentage": 1,
+    "standardization": "min_max"},
+
+  "model": {"label_type": "binary", "num_classes": 2, "use_embeddings": "False", "embeddings_dim": [],
+            "activation": "tanh_", "dropout": 0.2, "lr": 0.001, "optimizer": "ADAM_", "L2_regularization": 0.0001, "f": "x1_x0",
+            "GCN_layers": [
+              {"in_dim": "None", "out_dim": 250},
+              {"in_dim": 250, "out_dim": 250}
+              ]
+  },
+
+  "activator" : {"epochs": 400, "batch_size": 128, "loss_func": "binary_cross_entropy_with_logits_",
+    "train": 0.8, "dev": 0.1, "test": 0.1}
+}

@@ -1,0 +1,24 @@
+{
+  "dataset_name": "Aids",
+
+  "external": {"file_path": "../data/AIDS_external_data_all.csv",
+    "graph_col": "g_id", "node_col": "node",
+    "embeddings": ["chem", "symbol"], "continuous": ["charge", "x", "y"]},
+
+  "graphs_data": {"file_path": "../data/AIDS_all.csv",
+    "graph_col": "g_id", "src_col": "src", "dst_col": "dst", "label_col": "label", "directed": "False",
+    "features": ["DEG", "IN_DEG", "OUT_DEG", "CENTRALITY", "BFS"], "adjacency_norm": "NORM_REDUCED", "percentage": 1,
+    "standardization": "zscore"},
+
+  "model": {"label_type": "binary", "num_classes": 2, "use_embeddings": "True", "embeddings_dim": [10, 10],
+            "activation": "relu_", "dropout": 0, "lr": 1e-3, "optimizer": "ADAM_", "L2_regularization": 0, "f": "c_x0",
+            "GCN_layers": [
+              {"in_dim": "None", "out_dim": 100},
+              {"in_dim": 100, "out_dim": 50},
+              {"in_dim": 50, "out_dim": 25}
+              ]
+  },
+
+  "activator" : {"epochs": 1500, "batch_size": 128, "loss_func": "binary_cross_entropy_with_logits_",
+    "train": 0.3467, "dev": 0.1153, "test": 0.538}
+}

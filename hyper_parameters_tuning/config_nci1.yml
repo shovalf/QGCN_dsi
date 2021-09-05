@@ -1,0 +1,23 @@
+authorName: Shoval Frydman
+experimentName: fine_tuning_NCI1_QGCN
+trialConcurrency: 2   # max GPUs to use simultaneously.
+maxExecDuration: 500h
+maxTrialNum: 2000
+#choice: local, remote, pai
+trainingServicePlatform: local
+searchSpacePath: search_space.json
+#choice: true, false
+useAnnotation: false
+tuner:
+  #choice: TPE, Random, Anneal, Evolution, BatchTuner, MetisTuner
+  #SMAC (SMAC should be installed through nnictl)
+  builtinTunerName: TPE
+  classArgs:
+    #choice: maximize, minimize
+    optimize_mode: maximize
+trial:
+  command: python nni_nci1.py
+  codeDir: .
+localConfig:
+  maxTrialNumPerGpu: 3
+  useActiveGpu: true

@@ -1,0 +1,21 @@
+{
+    "features":{"_type":"choice","_value":[["DEG", "CENTRALITY", "BFS"], ["DEG", "BFS"], ["BFS", "CENTRALITY"],
+      ["DEG", "CENTRALITY"]]},
+    "batch_size":{"_type":"choice","_value":[16, 32, 64, 128]},
+    "optimizer":{"_type":"choice","_value":["ADAM_", "SGD_"]},
+    "lr":{"_type":"choice","_value":[1e-4, 1e-2, 1e-3]},
+    "dropout":{"_type":"choice","_value":[0, 0.3, 0.5]},
+    "L2_regularization":{"_type":"choice","_value":[1e-4, 1e-2, 0]},
+    "epochs":{"_type":"choice","_value":[200, 500, 800]},
+    "GCN_layers": {"_type": "choice", "_value": [[{"in_dim": "None", "out_dim": 500},
+              {"in_dim": 500, "out_dim": 250}], [
+              {"in_dim": "None", "out_dim": 200},
+              {"in_dim": 200, "out_dim": 100}
+              ], [
+              {"in_dim": "None", "out_dim": 250},
+              {"in_dim": 250, "out_dim": 100}, {"in_dim": 100, "out_dim": 50}
+              ]]},
+    "activation": {"_type": "choice", "_value": ["tanh_", "relu_", "sigmoid_"]},
+    "standardization": {"_type": "choice", "_value": ["min_max", "zscore"]},
+    "adjacency_norm": {"_type": "choice", "_value": ["NORM_REDUCED", "NORM_REDUCED_SYMMETRIC", "IDENTITY"]}
+  }

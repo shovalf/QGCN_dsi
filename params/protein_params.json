@@ -1,0 +1,23 @@
+{
+  "dataset_name": "Protein",
+
+  "external": {"file_path": "../data/Protein_external_data_all.csv",
+    "graph_col": "g_id", "node_col": "node",
+    "embeddings": ["type"], "continuous": ["aaLength"]},
+
+  "graphs_data": {"file_path": "../data/Protein_all.csv",
+    "graph_col": "g_id", "src_col": "src", "dst_col": "dst", "label_col": "label", "directed": "False",
+    "features": ["DEG", "BFS"], "adjacency_norm": "NORM_REDUCED_", "percentage": 1,
+    "standardization": "zscore"},
+
+  "model": {"label_type": "multi", "num_classes": 6, "use_embeddings": "True", "embeddings_dim": [10],
+            "activation": "sigmoid_", "dropout": 0, "lr": 1e-4, "optimizer": "ADAM_", "L2_regularization": 1e-9,
+            "GCN_layers": [
+              {"in_dim": "None", "out_dim": 250},
+              {"in_dim": 250, "out_dim": 250}
+              ]
+  },
+
+  "activator" : {"epochs": 1500, "batch_size": 128, "loss_func": "cross_entropy_",
+    "train": 0.333, "dev": 0.333, "test": 0.333}
+}
